@@ -93,8 +93,19 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory('/'), // 샵 안붙음
-  // history: createWebHashHistory(), // 샵 붙음
+  /* 
+  History 모드 - 샵 안붙음 
+  -운영 배포시 서버 설정 추가해줘야 404 Not Found 안뜸
+  */
+  history: createWebHistory('/'),
+
+  /* 
+  Hash모드 - 샵 붙음 
+  개발자 도구에서 Request URL : 샵 뒤의 도메인은 제거하고 요청함
+  루트로만 url 요청하기 때문에 서버 별도 설정 필요하지 않음
+  SED (검색 인증 최적화)에 나쁜 영향을 미친다 (서버 수준에서 특별한 처리가 필요하지 않기 때문에)
+   */
+  // history: createWebHashHistory(),
   routes, // routes : routes,
 });
 
